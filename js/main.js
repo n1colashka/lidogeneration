@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 el: '.swiper-pagination',
                 renderBullet: function (index, className) {
                     return '<span class="' + className + '">'+'<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><circle class="pagination-circle" cx="10" cy="10" r="4" transform="rotate(90 10 10)" fill="#384955"/> <circle class="pagination-path" cx="10" cy="10" r="9.75" transform="rotate(90 10 10)" stroke="#384955" stroke-width="0.5"/> </svg>  </span>';
-                  },
+                },
             },
             
         })
@@ -27,6 +27,142 @@ document.addEventListener('DOMContentLoaded', function() {
         })
     }
 
+    function initScroll() {
+
+        const scrollBlock = document.querySelector('.scroll__container');
+        
+        function blockScroll(scrollBlock) {
+            const container = scrollBlock;
+            const items = scrollBlock.children;
+            let activeIndex = 0;
+            let currentHeight = 900;
+            let offset = 350;
+
+            function initHelper() {
+                const helperUp =  document.querySelector('#up');
+                const helperDown =  document.querySelector('#down');
+                helperUp.addEventListener('click', scrollUp);
+                helperDown.addEventListener('click', scrollDown);
+                
+            }
+
+            function printInfo() {
+                console.table('offset: ', offset);
+                console.table('current height: ', currentHeight);
+                console.table('active index: ', activeIndex);
+            }
+
+            function prepareItems() {
+
+                items[0].classList.add('active');
+                
+                scrollBlock.style.transition = '0.5s ease';
+                Array.prototype.forEach.call(items, function(item) {
+                    item.style.transition = '0.5s ease';
+                });
+            }
+
+            function showSingleBlock() {
+                Array.prototype.forEach.call(items, function(item) {
+                    item.style.opacity = 0;
+                });
+                items[activeIndex].style.opacity = 1;
+            }
+
+            function showAllBlocks() {
+                Array.prototype.forEach.call(items, function(item) {
+                    item.style.opacity = '';
+                });
+                items[activeIndex].style.opacity = '';
+            }
+
+            function scrollUp() {
+                console.log(activeIndex);
+                if (activeIndex < 2) {
+                    scrollBlock.style.transform = `translateY(${-offset}px)`;
+                    offset += 350;
+                    currentHeight = 900 - offset + 300;
+                    container.style.height = currentHeight + 'px';
+                    activeIndex++;
+                    changeActive();
+                } 
+                if (activeIndex == 2) {
+                    showSingleBlock();
+                }
+                printInfo();
+            }
+
+            function scrollDown() {
+                if (activeIndex > 0) {
+                    offset -= 350;
+                    scrollBlock.style.transform = `translateY(${-offset + 350}px)`;
+                    activeIndex--;
+                    changeActive();
+
+                    if (currentHeight < 900) {
+                        currentHeight = 900 - offset + 350;
+                        container.style.height = currentHeight + 'px';
+                    }
+                    showAllBlocks();
+                }
+                printInfo();
+            }
+
+            function changeActive() {
+                Array.prototype.forEach.call(items, function(item) {
+                    item.classList.remove('active');
+                });
+                items[activeIndex].classList.add('active');
+            }
+
+            function focusBlock() {
+                const scrollSection= document.querySelector('.scroll');
+
+                scrollSection.addEventListener('mouseenter', function(e) {
+                    window.addEventListener('mousewheel', wheelScroll);
+                    window.addEventListener('DOMMouseScroll', wheelScroll);
+                    console.log('enter');
+                })
+                scrollSection.addEventListener('mouseleave', function(e) {
+                    window.removeEventListener('mousewheel', wheelScroll);
+                    window.removeEventListener('DOMMouseScroll', wheelScroll);
+                    console.log('leave');
+                })
+            }
+
+            function wheelScroll(event){
+                var delta = 0;
+                if (!event) event = window.event; // Событие IE.
+                // Установим кроссбраузерную delta
+                if (event.wheelDelta) {
+                    // IE, Opera, safari, chrome - кратность дельта равна 120
+                    delta = event.wheelDelta/120;
+                } else if (event.detail) {
+                    // Mozilla, кратность дельта равна 3
+                    delta = -event.detail/3;
+                }
+                if (delta) {
+                    // Отменим текущее событие - событие поумолчанию (скролинг окна).
+                    if (event.preventDefault) {
+                        event.preventDefault();
+                    }
+                    event.returnValue = false; // для IE
+            
+                    // если дельта больше 0, то колесо крутят вверх, иначе вниз
+                    var dir = delta > 0 ? scrollDown(): scrollUp();
+                    
+                }
+            }
+
+            initHelper();
+            prepareItems();
+            focusBlock();
+        }
+        
+        blockScroll(scrollBlock);
+    }
+
     initMainSlider();
     initLeadsSlider();
+    initScroll();
 })

@@ -277,6 +277,7 @@ a:hover {
 .scroll {
   padding-top: 200px;
   padding-bottom: 150px;
+  overflow: hidden;
 }
 
 .scroll__left {
@@ -301,7 +302,7 @@ a:hover {
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
-  margin-bottom: 80px;
+  margin-bottom: 55px;
   opacity: .1;
 }
 
@@ -311,6 +312,11 @@ a:hover {
 
 .scroll__item.active {
   opacity: 1;
+}
+
+.scroll__container {
+  height: 910px;
+  max-width: 530px;
 }
 
 .scroll__icon {
