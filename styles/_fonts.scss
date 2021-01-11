@@ -1,0 +1,61 @@
+@font-face {
+    font-family: 'Mplus';
+    src: url('../fonts/Mplus1p-Regular.eot');
+    src: 
+        url('../fonts/Mplus1p-Regular.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/Mplus1p-Regular.woff2') format('woff2'),
+        url('../fonts/Mplus1p-Regular.woff') format('woff'),
+        url('../fonts/Mplus1p-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Mplus-medium';
+    src: url('../fonts/Mplus1p-Medium.eot');
+    src: 
+        url('../fonts/Mplus1p-Medium.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/Mplus1p-Medium.woff2') format('woff2'),
+        url('../fonts/Mplus1p-Medium.woff') format('woff'),
+        url('../fonts/Mplus1p-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Mplus-light';
+    src: url('../fonts/Mplus1p-Light.eot');
+    src: 
+        url('../fonts/Mplus1p-Light.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/Mplus1p-Light.woff2') format('woff2'),
+        url('../fonts/Mplus1p-Light.woff') format('woff'),
+        url('../fonts/Mplus1p-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Mplus-extrabold';
+    src: url('../fonts/Mplus1p-ExtraBold.eot');
+    src: 
+        url('../fonts/Mplus1p-ExtraBold.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/Mplus1p-ExtraBold.woff2') format('woff2'),
+        url('../fonts/Mplus1p-ExtraBold.woff') format('woff'),
+        url('../fonts/Mplus1p-ExtraBold.ttf') format('truetype');
+    font-weight: 800;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: 'Mplus-black';
+    src: url('../fonts/Mplus1p-Black.eot');
+    src: 
+        url('../fonts/Mplus1p-Black.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/Mplus1p-Black.woff2') format('woff2'),
+        url('../fonts/Mplus1p-Black.woff') format('woff'),
+        url('../fonts/Mplus1p-Black.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+}
+

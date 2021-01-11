@@ -1,0 +1,63 @@
+// vars
+$accent: #0082DA;
+$black: #2C3033;
+$main: #384955;
+$grey: #9BAEBC;
+// vars
+
+html {
+    box-sizing: border-box;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+body {
+    font-family:'Mplus', sans-serif;
+    font-weight: 400;
+    color: $main;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+
+    &:hover {
+        text-decoration: none;
+        color: inherit;
+    }
+}
+
+.swiper-container-vertical>.swiper-pagination-bullets .swiper-pagination-bullet {
+    position: relative;
+    margin: 8px 0;
+    width: 20px;
+    height: 20px;
+    background-color: transparent;
+}
+
+.swiper-pagination-bullet-active .pagination-path{
+	display: inline-block !important;
+    stroke-dasharray: 100;
+    stroke-dashoffset: 0;
+    animation: dash linear 2s;
+    animation-iteration-count: unset;
+}
+.pagination-path {
+	display: none;
+}
+
+@keyframes dash {
+    from {
+        stroke-dashoffset: 100;
+    }
+
+    to {
+        stroke-dashoffset: 0;
+    }
+}
