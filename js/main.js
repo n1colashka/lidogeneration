@@ -38,19 +38,6 @@ document.addEventListener('DOMContentLoaded', function() {
             let currentHeight = 900;
             let offset = 350;
 
-            function initHelper() {
-                const helperUp =  document.querySelector('#up');
-                const helperDown =  document.querySelector('#down');
-                helperUp.addEventListener('click', scrollUp);
-                helperDown.addEventListener('click', scrollDown);
-                
-            }
-
-            function printInfo() {
-                console.table('offset: ', offset);
-                console.table('current height: ', currentHeight);
-                console.table('active index: ', activeIndex);
-            }
 
             function prepareItems() {
 
@@ -77,7 +64,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
 
             function scrollUp() {
-                console.log(activeIndex);
                 if (activeIndex < 2) {
                     scrollBlock.style.transform = `translateY(${-offset}px)`;
                     offset += 350;
@@ -89,7 +75,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (activeIndex == 2) {
                     showSingleBlock();
                 }
-                printInfo();
             }
 
             function scrollDown() {
@@ -105,7 +90,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
                     showAllBlocks();
                 }
-                printInfo();
             }
 
             function changeActive() {
@@ -119,14 +103,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 const scrollSection= document.querySelector('.scroll');
 
                 scrollSection.addEventListener('mouseenter', function(e) {
-                    window.addEventListener('mousewheel', wheelScroll);
-                    window.addEventListener('DOMMouseScroll', wheelScroll);
-                    console.log('enter');
+                    window.addEventListener('mousewheel', wheelScroll); // { passive: false } - добавить третим аргументом, чтобы убрать ошибки в консоли Chrome
+                    window.addEventListener('DOMMouseScroll', wheelScroll); // { passive: false } - добавить третим аргументом, чтобы убрать ошибки в консоли Chrome
                 })
                 scrollSection.addEventListener('mouseleave', function(e) {
-                    window.removeEventListener('mousewheel', wheelScroll);
-                    window.removeEventListener('DOMMouseScroll', wheelScroll);
-                    console.log('leave');
+                    window.removeEventListener('mousewheel', wheelScrol); // { passive: true } - добавить третим аргументом, чтобы убрать ошибки в консоли Chrome
+                    window.removeEventListener('DOMMouseScroll', wheelScroll); // { passive: true } - добавить третим аргументом, чтобы убрать ошибки в консоли Chrome
                 })
             }
 
@@ -154,7 +136,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }
 
-            initHelper();
             prepareItems();
             focusBlock();
         }
