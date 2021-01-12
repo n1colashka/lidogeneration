@@ -33,6 +33,9 @@
     &__info {
         max-width: 370px;
     }
+    &__mobile-socials {
+        display: none;
+    }
 }
 
 .socials {
@@ -56,6 +59,7 @@
 
     &__icon {
         margin-right: 20px;
+        flex-shrink: 0;
     }
 
     &__name {
@@ -63,6 +67,7 @@
         font-size: 18px;
         line-height: 180%;
     }
+
 }
 .form {
     background-color: $main;
@@ -74,7 +79,7 @@
 
         &:hover {
             svg path {
-                stroke: #0082DA;
+                stroke: rgba($accent, 0.4);
             }
         }
 
@@ -93,19 +98,32 @@
             width: 100%;
             margin-top: 8px;
             border: 2px solid rgba(#fff, 0.2);
+            background-color: $main;
             border-radius: 6px;
             padding: 8px 45px;
             padding-right: 20px;
             color: rgba(#fff, 0.4);
             outline: transparent;
             cursor: pointer;
+            font-family:'Mplus', sans-serif;
+            font-weight: 400;
 
             &:focus,
             &:hover,
             &:active {
-                border: 2px solid rgba($accent, .5);
+                border: 2px solid rgba($accent, .2);
                 outline: transparent;
                 box-shadow: none;
+                background-color: $main;
+                color: rgba(#fff, 0.4);
+            }
+
+            &:focus {
+                color: rgba(#fff, 1);
+
+                & ~ .form__icon svg path {
+                    stroke: rgba($accent, 0.4);
+                }
             }
         }
 
@@ -119,18 +137,26 @@
             color: rgba(#fff, 0.4);
             outline: transparent;
             height: 115px;
+            background-color: $main;
             resize: none;
             cursor: pointer;
 
             &:focus,
             &:hover,
             &:active {
-                border: 2px solid rgba($accent, .5);
+                border: 2px solid rgba($accent, .2);
                 outline: transparent;
                 box-shadow: none;
+                background-color: $main;
+                color: rgba(#fff, 0.4);
+            }
+            &:focus {
+                color: rgba(#fff, 1)
             }
         }
     }
+
+    
 
     &__element {
         position: relative;

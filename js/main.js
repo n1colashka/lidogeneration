@@ -36,7 +36,17 @@ document.addEventListener('DOMContentLoaded', function() {
             const items = scrollBlock.children;
             let activeIndex = 0;
             let currentHeight = 900;
+            let height = 900;
             let offset = 350;
+            let offsetInitial = 350;
+
+            if (window.innerWidth <= 1200) {
+                offsetInitial = 200;
+                offset = 200;
+                currentHeight = 460;
+                height = 400;
+            }
+                
 
 
             function prepareItems() {
@@ -66,8 +76,8 @@ document.addEventListener('DOMContentLoaded', function() {
             function scrollUp() {
                 if (activeIndex < 2) {
                     scrollBlock.style.transform = `translateY(${-offset}px)`;
-                    offset += 350;
-                    currentHeight = 900 - offset + 300;
+                    offset += offsetInitial;
+                    currentHeight = height - offset + 300;
                     container.style.height = currentHeight + 'px';
                     activeIndex++;
                     changeActive();
@@ -79,13 +89,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
             function scrollDown() {
                 if (activeIndex > 0) {
-                    offset -= 350;
-                    scrollBlock.style.transform = `translateY(${-offset + 350}px)`;
+                    offset -= offsetInitial;
+                    scrollBlock.style.transform = `translateY(${-offset + offsetInitial}px)`;
                     activeIndex--;
                     changeActive();
 
-                    if (currentHeight < 900) {
-                        currentHeight = 900 - offset + 350;
+                    if (currentHeight < height) {
+                        currentHeight = height - offset + offsetInitial;
                         container.style.height = currentHeight + 'px';
                     }
                     showAllBlocks();
@@ -103,12 +113,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 const scrollSection= document.querySelector('.scroll');
 
                 scrollSection.addEventListener('mouseenter', function(e) {
-                    window.addEventListener('mousewheel', wheelScroll); // { passive: false } - добавить третим аргументом, чтобы убрать ошибки в консоли Chrome
-                    window.addEventListener('DOMMouseScroll', wheelScroll); // { passive: false } - добавить третим аргументом, чтобы убрать ошибки в консоли Chrome
+                    window.addEventListener('mousewheel', wheelScroll);  { passive: false } //- добавить третим аргументом, чтобы убрать ошибки в консоли Chrome
+                    window.addEventListener('DOMMouseScroll', wheelScroll);  { passive: false } // - добавить третим аргументом, чтобы убрать ошибки в консоли Chrome
                 })
                 scrollSection.addEventListener('mouseleave', function(e) {
-                    window.removeEventListener('mousewheel', wheelScrol); // { passive: true } - добавить третим аргументом, чтобы убрать ошибки в консоли Chrome
-                    window.removeEventListener('DOMMouseScroll', wheelScroll); // { passive: true } - добавить третим аргументом, чтобы убрать ошибки в консоли Chrome
+                    window.removeEventListener('mousewheel', wheelScroll);  { passive: true } // - добавить третим аргументом, чтобы убрать ошибки в консоли Chrome
+                    window.removeEventListener('DOMMouseScroll', wheelScroll);  { passive: true } // - добавить третим аргументом, чтобы убрать ошибки в консоли Chrome
                 })
             }
 
@@ -145,5 +155,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     initMainSlider();
     initLeadsSlider();
-    initScroll();
+    
+    if (window.innerWidth > 991) {
+        initScroll();
+    }
 })
