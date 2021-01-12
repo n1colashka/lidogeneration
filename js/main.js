@@ -154,9 +154,12 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     initMainSlider();
-    initLeadsSlider();
     
     if (window.innerWidth > 991) {
         initScroll();
+    }
+    if (window.innerWidth > 768) {
+        initLeadsSlider();
+
     }
 })
