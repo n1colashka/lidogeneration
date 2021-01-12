@@ -142,7 +142,8 @@
       margin-bottom: 0;
     }
 
-    &__slider-item {
+    .swiper-pagination {
+      display: none;
     }
 
     &__head {
@@ -169,11 +170,6 @@
       margin-right: auto;
     }
 
-    &__btn-circle {
-    }
-
-    &__btn-text {
-    }
 
     &__text {
       font-size: 14px;
@@ -188,9 +184,6 @@
         margin: 0 auto;
         top: -25px;
       }
-    }
-
-    &__mobile {
     }
 
     &__foot {
@@ -233,10 +226,6 @@
 
 		&__name {
       margin-bottom: 25px;
-		}
-
-		&__text {
-      
 		}
 
 		&__timeline {
@@ -326,9 +315,72 @@
         width: 100%;
       }
   }
+  .leads {
+    .container {
+      max-width: 100%;
+    }
+
+    &__slider {
+      height: 600px;
+    }
+
+
+    &__title {
+      font-size: 24px;
+      line-height: 150%;
+      margin-bottom: 40px;
+    }
+
+    &__text {
+      font-size: 14px;
+      line-height: 160%;
+    }
+}
+
 }
 
 @media (max-width: 768px) {
+  .hero {
+    padding-bottom: 70px;
+    .container {
+      max-width: 100%;
+    }
+    &__foot {
+      display: none;
+    }
+    &__slider {
+      display: none;
+    }
+    &__mobile {
+      display: block;
+      .hero__foot {
+        display: block;
+        padding-bottom: 90px;
+
+        ul {
+          padding-left: 0;
+          align-items: flex-start;
+          justify-content: space-between;
+        }
+
+        li {
+          margin: 0 10px;
+          text-align: center;
+        }
+      }
+    }
+    &__head {
+      max-width: 100%;
+      margin-left: 0;
+      margin-right: 0;
+    }
+  }
+  .leads {
+    background: url('../images/leads-bg-mob.jpg') center / cover no-repeat;
+    .swiper-pagination {
+      display: none;
+    }
+  }
   .container {
     padding-left: 30px;
     padding-right: 30px;
